@@ -1,7 +1,4 @@
 from django.contrib import admin
-
-# Register your models here.
-
 from .models import Post
 
 class PostAdmin(admin.ModelAdmin):
@@ -13,4 +10,4 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('pub_date',)
 
 
-admin.site.register(Post)
+admin.site.register(Post, PostAdmin)
