@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
 from django.template import loader
-from .models import Post
+from .models import Post, Group
 
 # Главная страница
 def index(request):
@@ -23,6 +23,7 @@ def group_posts(request):
     template = 'posts/group_list.html'
     title = 'Список групп'
     context = {
+        'group': Group.objects.order_by('-pub_date')[:10],
         'title': title,
         'text': "Здесь будет информация о группах проекта Yatube"
     }
