@@ -23,7 +23,12 @@ class Post(models.Model):
         Group,
         blank=True,
         null=True,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name='group'
     )
 
+    class Meta:
+        ordering = ('-pub_date',)
+
+    def __str__(self):
+        return self.text[0:15]

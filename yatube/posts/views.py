@@ -8,7 +8,7 @@ from .models import Post, Group
 # Главная страница
 def index(request):
     template = 'posts/index.html'
-    title = 'Главная страница'
+    title = 'Последние обновления на сайте'
     posts = Post.objects.order_by('-pub_date')[:10]
     context = {
         'title': title,
