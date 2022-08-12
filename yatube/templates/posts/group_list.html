@@ -5,5 +5,20 @@
 {% endblock %}
 
 {% block content %}
-    {{ text }}
+    {% if group.slug %}
+        <h3>Записи группы {{ group.slug }}</h3>
+    {% endif %}
+    {% for post in posts %}
+
+        <ul>
+            <li>
+                Автор: {{ post.author.get_full_name }}
+            </li>
+            <li>
+                Дата публикации: {{ post.pub_date|date:"d E Y" }}
+            </li>
+        </ul>
+        <p>{{ post.text }}</p>
+        {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
 {% endblock %}
